@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct n{
+int x ;
+struct n * next ;
+
+};
+typedef struct n node ;
+void sonaekle(node * r){
+int i ;
+for(i=0;i<9;i++){
+printf("sona eklemek istediginz sayiyi giriniz :");
+scanf("%d",&r->x);
+r->next=(node*)malloc(sizeof(node));
+r=r->next;
+}r->next=NULL;
+
+}
+void secilenisonaekle(node * r){
+int z,i ;
+int a=1,b=1,c=1;
+node * sonuncu ;
+node * ilk;
+node * ilk2;
+ilk2=ilk;
+ilk=(node*)malloc(sizeof(node));
+node * secilsayi ;
+node * temp ;
+node * temp2 ;
+temp2=temp;
+node * first ;
+first=r ;
+temp=(node*)malloc(sizeof(node));
+secilsayi=r ;
+
+sonuncu=r ;
+printf("sona eklenmesini istediginiz sayiyi giriniz :");
+scanf("%d",&z);
+while(sonuncu->next->next!=NULL){
+ sonuncu=sonuncu->next;
+}
+
+while(secilsayi->x!=z){
+ secilsayi=secilsayi->next;
+  a++;
+}
+
+printf("yeni dizimiz\n");
+for(i=0;i<9-a;i++){
+ilk->x=secilsayi->next->x ;
+printf("%d\t",ilk->x);
+ secilsayi->next=secilsayi->next->next;
+ ilk->next=(node*)malloc(sizeof(node));
+ ilk=ilk->next;
+}
+for(i=1;i<a;i++){
+temp->x=first->x ;
+printf("%d\t",temp->x);
+temp->next=(node*)malloc(sizeof(node));
+temp=temp->next;
+first=first->next;
+}
+printf("     %d",z);
+
+/*
+for(i=0;i<8;i++){
+ if(a<5 && a>1){
+  printf("%d\n",ilk->x);
+  ilk=ilk->next;
+  a--;
+ } else{
+ printf("%d\n",temp->x);
+ temp=temp->next;
+ }
+
+}printf("%d",z);*/
+}
+
+
+int main()
+{
+node * root ;
+root=(node*)malloc(sizeof(node));
+node * iter ;
+iter=root;
+sonaekle(iter);
+secilenisonaekle(iter);
+/*
+int i ;
+for(i=0;i<9;i++){
+printf("%d.sayimiz :%d\n",i+1,iter->x);
+iter=iter->next;
+}*/
+    return 0;
+}
